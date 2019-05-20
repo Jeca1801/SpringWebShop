@@ -1,0 +1,13 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <title>Result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+        Registreringen lyckades, Välkommen: <p th:text="${user.name}"/>
+        <a th:href="@{/login}"> Log in</a>
+       
+    </body>
+</html>
