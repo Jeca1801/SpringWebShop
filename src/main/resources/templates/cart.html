@@ -1,0 +1,36 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <title>Result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+    <body>
+       Välkommen, du är nu inloggad: <p th:text="${username}"/>
+           <a th:href="@{/customer/}"> Customer</a>
+       <h3>Produkter</h3>
+       <table border="1">
+           <tr>
+               <th>Id</th>
+               <th>Name</th>
+               <th>Brand</th>
+               <th>Description</th>
+               <th>Price</th>
+               <th>Remove</th>
+               
+           </tr>
+           <tr th:each="product : ${cartProducts}">
+               <td th:text="${product.id}"></td>
+               <td th:text="${product.name}"></td>
+               <td th:text="${product.brand}"></td>
+               <td th:text="${product.description}"></td>
+               <td th:text="${product.price}"></td>
+                <td>
+                   <a th:href="${'/remove/' + product.id + '/' }">Remove</a>
+               </td>
+
+           </tr>
+       </table>
+        <a th:href="@{/orderCompleted}"> Make order</a>
+    </body>
+</html>
