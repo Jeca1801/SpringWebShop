@@ -5,6 +5,7 @@
  */
 package com.example.demo.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -22,17 +25,15 @@ public class Cart {
     private Long id;
     @OneToOne
     private User user;
-    @ManyToMany
-    private List<Product> products;
+    
     private int quantity;
     private double totalprice;
-    private double price; 
-
+    private boolean purchased;
     
     public Cart(int quantity, double totalPrice, double price){
         this.quantity = quantity;
-        this.totalprice = totalprice;
-        this.price = price;
+        this.totalprice = totalPrice;
+        this.purchased = false;
         
     }
     public Cart(){
@@ -54,14 +55,6 @@ public class Cart {
     public void setUser(User user) {
         this.user = user;
     }
-
-    public List<Product> getProductList() {
-        return products;
-    }
-
-    public void setProductList(List<Product> products) {
-        this.products = products;
-    }
     public int getQuantity() {
         return quantity;
     }
@@ -77,14 +70,13 @@ public class Cart {
     public void setTotalprice(double totalprice) {
         this.totalprice = totalprice;
     }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
     
+    public boolean isPurchased() {
+        return purchased;
+    }
+
+    public void setPurchased(boolean purchased) {
+        this.purchased = purchased;
+    }
     
 }
